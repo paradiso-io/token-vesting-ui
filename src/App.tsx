@@ -1,11 +1,14 @@
-import React from 'react';
+import { ThemeProvider } from 'styled-components/macro'
+import Header from './components/Header';
+import theme from './theme'
+import './assets/css/style.css'
 
-function App() {
+function App(): JSX.Element {
   return (
-    <div className="App">
-      <header className="App-header"></header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <Header />
+    </ThemeProvider>
   );
 }
 
-export default App;
+export default App
