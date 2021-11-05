@@ -2,14 +2,14 @@ import styled from 'styled-components/macro'
 import { Container, Button } from 'react-bootstrap'
 
 export const HeaderWrapper = styled.header`
+  display: flex;
   background: ${props => props.theme.color.headerBg};
   box-shadow: rgba(0, 0, 0, .4) 0px 3px 5px;
 `
 export const HeaderContainer = styled(Container)`
-  display: flex;
-  align-items: center;
-  margin: 0 auto;
-  min-height: 80px;
+  > .row {
+    min-height: 80px;
+  }
 `
 export const Logo = styled.img`
   height: auto;

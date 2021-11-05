@@ -3,3 +3,14 @@ body {
   margin: 0;
   padding: 0;
 }
+
+
+a {
+  color: #e2007a;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #e2007a;
+  text-decoration: underline;
+}
