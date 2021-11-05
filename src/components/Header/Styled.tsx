@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components/macro'
+import styled from 'styled-components/macro'
 import { Container, Button } from 'react-bootstrap'
 
 export const HeaderWrapper = styled.header`
@@ -20,7 +20,7 @@ export const AlignRight = styled.div`
 export const ConnectWalletButton = styled(Button)`
   border-radius: 3px;
   transition: all 0.5s ease;
-  padding: 0.75rem 1rem;
+  padding: 0.6rem 1rem;
   text-transform: uppercase;
 
   &.btn {
