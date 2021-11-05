@@ -9,22 +9,22 @@ function Footer(): JSX.Element {
         <Row className="align-items-center">
           <Col md={6}>
             Copyright {new Date().getFullYear()}&nbsp;
-            <a href="https://dotoracle.network/" target="_blank" rel="nofollow">DotOracle</a>. All rights reserved.
+            <a href="https://dotoracle.network/" target="_blank" rel="nofollow noreferrer noopener">DotOracle</a>. All rights reserved.
           </Col>
           <Col md={6}>
             <SocialLinks>
               <SocialItem>
-                <a href="https://t.me/dotoracle" target="_blank" rel="nofollw noreferrer noopener">
+                <a href="https://t.me/dotoracle" target="_blank" rel="nofollow noreferrer noopener">
                   <FaTelegramPlane size="1.5rem" />
                 </a>
               </SocialItem>
               <SocialItem>
-                <a href="https://twitter.com/DotOracle" target="_blank" rel="nofollw noreferrer noopener">
+                <a href="https://twitter.com/DotOracle" target="_blank" rel="nofollow noreferrer noopener">
                   <FaTwitter size="1.5rem" />
                 </a>
               </SocialItem>
               <SocialItem>
-                <a href="https://github.com/dotoracle" target="_blank" rel="nofollw noreferrer noopener">
+                <a href="https://github.com/dotoracle" target="_blank" rel="nofollow noreferrer noopener">
                   <FaGithub size="1.5rem" />
                 </a>
               </SocialItem>
