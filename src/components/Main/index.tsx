@@ -1,9 +1,7 @@
 import { MainWrapper } from './Styled'
 
 function Main(): JSX.Element {
-  return (
-    <MainWrapper></MainWrapper>
-  )
+  return <MainWrapper></MainWrapper>
 }
 
 export default Main

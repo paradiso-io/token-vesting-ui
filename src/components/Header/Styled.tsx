@@ -4,7 +4,7 @@ import { Container, Button } from 'react-bootstrap'
 export const HeaderWrapper = styled.header`
   display: flex;
   background: ${props => props.theme.color.headerBg};
-  box-shadow: rgba(0, 0, 0, .4) 0px 3px 5px;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 3px 5px;
 `
 export const HeaderContainer = styled(Container)`
   > .row {

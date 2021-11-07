@@ -9,7 +9,10 @@ function Footer(): JSX.Element {
         <Row className="align-items-center">
           <Col md={6}>
             Copyright {new Date().getFullYear()}&nbsp;
-            <a href="https://dotoracle.network/" target="_blank" rel="nofollow noreferrer noopener">DotOracle</a>. All rights reserved.
+            <a href="https://dotoracle.network/" target="_blank" rel="nofollow noreferrer noopener">
+              DotOracle
+            </a>
+            . All rights reserved.
           </Col>
           <Col md={6}>
             <SocialLinks>

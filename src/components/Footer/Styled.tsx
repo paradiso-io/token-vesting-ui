@@ -6,9 +6,9 @@ export const FooterWrapper = styled.div`
   color: #fff;
 `
 export const SocialLinks = styled.ul`
-@media (min-width: 768px) {
-  text-align: right;
-}
+  @media (min-width: 768px) {
+    text-align: right;
+  }
 `
 export const SocialItem = styled.li`
   display: inline-block;

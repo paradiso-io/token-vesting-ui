@@ -30,7 +30,7 @@
     "@commitlint/cli": "^12.1.4",
     "@commitlint/config-conventional": "^12.1.4",
     "commitlint": "^14.1.0",
-    "eslint": "^8.1.0",
+    "eslint": "7.11.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-config-prettier-react": "^0.0.24",
     "eslint-config-recommended": "^4.1.0",
