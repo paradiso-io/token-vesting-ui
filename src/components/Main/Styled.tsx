@@ -150,4 +150,8 @@ export const VestingButton = styled(Button)`
       box-shadow: 0 0 0 0.25rem ${props => props.theme.color.secondary}42;
     }
   }
+
+  svg {
+    margin-right: 0.5rem;
+  }
 `

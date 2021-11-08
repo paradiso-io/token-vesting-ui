@@ -14,6 +14,7 @@ import {
   VestingHeader,
   VestingValue,
   VestingButton,
+  LoadingIcon,
 } from './Styled'
 import { useActiveWeb3React, useVestingContract } from '../../hooks'
 import config from '../../config.json'
@@ -25,6 +26,7 @@ function Main(): JSX.Element {
     _releasable: 0,
   })
   const [totalVesting, setTotalVesting] = useState(0)
+  const [isClaiming, setClaiming] = useState(false)
 
   const { account, chainId } = useActiveWeb3React()
   const networkId = chainId ?? Number(process.env.REACT_APP_CHAIN_ID)
@@ -41,7 +43,7 @@ function Main(): JSX.Element {
         const _totalVesting = fromWei(_lockedInfo._locked).plus(fromWei(_lockedInfo._releasable))
         setTotalVesting(_totalVesting.toNumber())
       }
-    } catch (error) {
+    } catch (error: any) {
       toast.error(<ToastMessage color="error" headerText="Error" bodyText="Could not fetch user info" />, {
         toastId: 'fetchLockedInfo',
       })
@@ -52,6 +54,31 @@ function Main(): JSX.Element {
   useEffect(() => {
     fetchLockedInfo()
   }, [account])
+
+  const claimToken = async () => {
+    try {
+      setClaiming(true)
+      if (account && vestingContract) {
+        const receipt = await vestingContract.methods.unlock(account).send({ from: account })
+
+        if (receipt) {
+          toast.success(<ToastMessage color="success" headerText="Success" bodyText="Please check your balance" />, {
+            toastId: 'claimToken',
+          })
+        }
+      }
+    } catch (error: any) {
+      // we only care if the error is something other than the user rejected the tx
+      if (error?.code !== 4001) {
+        toast.error(<ToastMessage color="error" headerText="Error" bodyText="Could not claim token" />, {
+          toastId: 'claimToken',
+        })
+      }
+      console.error(error)
+    } finally {
+      setClaiming(false)
+    }
+  }
 
   return (
     <MainWrapper>
@@ -99,7 +126,10 @@ function Main(): JSX.Element {
                   </VestingRow>
                 </tbody>
               </VestingTable>
-              <VestingButton variant="primary">Claim</VestingButton>
+              <VestingButton variant="primary" disabled={isClaiming} onClick={claimToken}>
+                {isClaiming && <LoadingIcon />}
+                Claim
+              </VestingButton>
             </ClaimWrapper>
           </Col>
         </Row>
