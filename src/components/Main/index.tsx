@@ -61,7 +61,7 @@ function Main(): JSX.Element {
                   <VestingValue>5,000 DTO</VestingValue>
                 </VestingRow>
               </VestingTable>
-              <VestingButton variant="primary">Release Token</VestingButton>
+              <VestingButton variant="primary">Claim</VestingButton>
             </ClaimWrapper>
           </Col>
         </Row>
