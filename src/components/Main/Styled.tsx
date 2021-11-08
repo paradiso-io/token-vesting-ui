@@ -155,3 +155,12 @@ export const VestingButton = styled(Button)`
     margin-right: 0.5rem;
   }
 `
+export const ClaimCountdownText = styled.span`
+  display: inline-block;
+  margin-top: 2rem;
+  border-radius: 3px;
+  padding: 0.5rem 1.5rem;
+  background-color: ${props => props.theme.color.primary};
+  opacity: 0.5;
+  cursor-pointer: normal;
+`

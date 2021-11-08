@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
+import Countdown, { zeroPad } from 'react-countdown'
 import { toast } from 'react-toastify'
 import ToastMessage from '../ToastMessage'
 import {
@@ -15,6 +16,7 @@ import {
   VestingValue,
   VestingButton,
   LoadingIcon,
+  ClaimCountdownText,
 } from './Styled'
 import { useActiveWeb3React, useVestingContract } from '../../hooks'
 import config from '../../config.json'
@@ -26,6 +28,8 @@ function Main(): JSX.Element {
     _releasable: 0,
   })
   const [totalVesting, setTotalVesting] = useState(0)
+  const [startVestingTime, setStartVestingTime] = useState(0)
+  const [isFetching, setFetching] = useState(false)
   const [isClaiming, setClaiming] = useState(false)
 
   const { account, chainId } = useActiveWeb3React()
@@ -36,9 +40,14 @@ function Main(): JSX.Element {
 
   const fetchLockedInfo = async () => {
     try {
+      setFetching(true)
+
       if (account && vestingContract) {
         const _lockedInfo = await vestingContract.methods.getLockedInfo(account).call()
         setLockedInfo(_lockedInfo)
+
+        const _startVestingTime = await vestingContract.methods.startVestingTime().call()
+        setStartVestingTime(Number(_startVestingTime))
 
         const _totalVesting = fromWei(_lockedInfo._locked).plus(fromWei(_lockedInfo._releasable))
         setTotalVesting(_totalVesting.toNumber())
@@ -48,6 +57,8 @@ function Main(): JSX.Element {
         toastId: 'fetchLockedInfo',
       })
       console.error(error)
+    } finally {
+      setFetching(false)
     }
   }
 
@@ -126,10 +137,26 @@ function Main(): JSX.Element {
                   </VestingRow>
                 </tbody>
               </VestingTable>
-              <VestingButton variant="primary" disabled={isClaiming} onClick={claimToken}>
-                {isClaiming && <LoadingIcon />}
-                Claim
-              </VestingButton>
+              {!isFetching && (
+                <Countdown
+                  date={startVestingTime * 1000}
+                  zeroPadTime={2}
+                  renderer={props2 =>
+                    props2.completed ? (
+                      <VestingButton variant="primary" disabled={isClaiming} onClick={claimToken}>
+                        {isClaiming && <LoadingIcon />}
+                        Claim
+                      </VestingButton>
+                    ) : (
+                      <ClaimCountdownText>
+                        {props2.completed}
+                        {zeroPad(props2.days)}d:{zeroPad(props2.hours)}h:{zeroPad(props2.minutes)}m:
+                        {zeroPad(props2.seconds)}s
+                      </ClaimCountdownText>
+                    )
+                  }
+                />
+              )}
             </ClaimWrapper>
           </Col>
         </Row>
