@@ -1,4 +1,7 @@
+import { useEffect, useState } from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
+import { toast } from 'react-toastify'
+import ToastMessage from '../ToastMessage'
 import {
   MainWrapper,
   TitleWrapper,
@@ -12,14 +15,43 @@ import {
   VestingValue,
   VestingButton,
 } from './Styled'
-import { useActiveWeb3React } from '../../hooks'
+import { useActiveWeb3React, useVestingContract } from '../../hooks'
 import config from '../../config.json'
+import { formatNumber, fromWei } from '../../utils'
 
 function Main(): JSX.Element {
-  const { chainId } = useActiveWeb3React()
+  const [lockedInfo, setLockedInfo] = useState({
+    _locked: 0,
+    _releasable: 0,
+  })
+  const [totalVesting, setTotalVesting] = useState(0)
+
+  const { account, chainId } = useActiveWeb3React()
   const networkId = chainId ?? Number(process.env.REACT_APP_CHAIN_ID)
   // @ts-ignore
-  const { token, explorerUrl } = config[networkId]
+  const { token, explorerUrl, vesting } = config[networkId]
+  const vestingContract = useVestingContract(vesting)
+
+  const fetchLockedInfo = async () => {
+    try {
+      if (account && vestingContract) {
+        const _lockedInfo = await vestingContract.methods.getLockedInfo(account).call()
+        setLockedInfo(_lockedInfo)
+
+        const _totalVesting = fromWei(_lockedInfo._locked).plus(fromWei(_lockedInfo._releasable))
+        setTotalVesting(_totalVesting.toNumber())
+      }
+    } catch (error) {
+      toast.error(<ToastMessage color="error" headerText="Error" bodyText="Could not fetch user info" />, {
+        toastId: 'fetchLockedInfo',
+      })
+      console.error(error)
+    }
+  }
+
+  useEffect(() => {
+    fetchLockedInfo()
+  }, [account])
 
   return (
     <MainWrapper>
@@ -48,18 +80,24 @@ function Main(): JSX.Element {
                 </span>
               </TokenInfo>
               <VestingTable>
-                <VestingRow>
-                  <VestingHeader>Total Vesting</VestingHeader>
-                  <VestingValue>50,000,000 DTO</VestingValue>
-                </VestingRow>
-                <VestingRow>
-                  <VestingHeader>Locked</VestingHeader>
-                  <VestingValue>4,999,500 DTO</VestingValue>
-                </VestingRow>
-                <VestingRow>
-                  <VestingHeader>Releasable</VestingHeader>
-                  <VestingValue>5,000 DTO</VestingValue>
-                </VestingRow>
+                <tbody>
+                  <VestingRow>
+                    <VestingHeader>Total Vesting</VestingHeader>
+                    <VestingValue>{`${formatNumber(totalVesting.toFixed(3))} ${token.symbol}`}</VestingValue>
+                  </VestingRow>
+                  <VestingRow>
+                    <VestingHeader>Locked</VestingHeader>
+                    <VestingValue>{`${formatNumber(fromWei(lockedInfo._locked).toNumber().toFixed(3))} ${
+                      token.symbol
+                    }`}</VestingValue>
+                  </VestingRow>
+                  <VestingRow>
+                    <VestingHeader>Releasable</VestingHeader>
+                    <VestingValue>{`${formatNumber(fromWei(lockedInfo._releasable).toNumber().toFixed(3))} ${
+                      token.symbol
+                    }`}</VestingValue>
+                  </VestingRow>
+                </tbody>
               </VestingTable>
               <VestingButton variant="primary">Claim</VestingButton>
             </ClaimWrapper>

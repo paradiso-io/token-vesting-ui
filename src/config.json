@@ -1,5 +1,6 @@
 {
   "1": {
+    "vesting": "0x5DeB0098B663790F83318be7dbfaE3f8C1c23D0b",
     "explorerUrl": "https://etherscan.io/",
     "token": {
       "address": "0xb57420fad6731b004309d5a0ec7c6c906adb8df7",
@@ -8,6 +9,7 @@
     }
   },
   "42": {
+    "vesting": "0x5DeB0098B663790F83318be7dbfaE3f8C1c23D0b",
     "explorerUrl": "https://kovan.etherscan.io/",
     "token": {
       "address": "0xfe8b72af29b06da03c4c4fcf1166f0303a341b53",
