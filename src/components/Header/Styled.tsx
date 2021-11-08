@@ -3,8 +3,9 @@ import { Container, Button } from 'react-bootstrap'
 
 export const HeaderWrapper = styled.header`
   display: flex;
-  background: ${props => props.theme.color.headerBg};
+  background-color: ${props => props.theme.color.headerBg};
   box-shadow: rgba(0, 0, 0, 0.4) 0px 3px 5px;
+  position: relative;
 `
 export const HeaderContainer = styled(Container)`
   > .row {
@@ -38,6 +39,8 @@ export const ConnectWalletButton = styled(Button)`
   transition: all 0.5s ease;
   padding: 0.6rem 1rem;
   text-transform: uppercase;
+  font-size: 14px;
+  width: 180px;
 
   &.btn {
     font-family: Montserrat, sans-serif;
@@ -97,4 +100,44 @@ export const MenuLink = styled.a`
     height: 2px;
     transition: all 0.4s ease;
   }
+`
+
+// Mobile Menu
+export const MobileWrap = styled.div`
+  display: flex;
+  align-items: center;
+`
+export const MenuToggleBtn = styled.a`
+  color: #fff;
+  margin-left: 1rem;
+
+  &:hover,
+  &:focus,
+  &:active {
+    color: #fff;
+  }
+`
+export const MobileMenuWrapper = styled.ul`
+  padding: 0;
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  background-color: ${props => props.theme.color.headerBg};
+
+  li {
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid #ffffff26;
+  }
+  li:first-child {
+    border-top: 1px solid #ffffff26;
+  }
+  li:last-child {
+    border-bottom: 0;
+  }
+`
+export const MobileMenuLink = styled.a`
+  text-transform: uppercase;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #fff;
 `
