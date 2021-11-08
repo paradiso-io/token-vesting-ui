@@ -1,5 +1,5 @@
 import styled from 'styled-components/macro'
-import { Container, Button } from 'react-bootstrap'
+import { Container } from 'react-bootstrap'
 
 export const HeaderWrapper = styled.header`
   display: flex;
@@ -33,36 +33,6 @@ export const RightColumn = styled.div`
   align-items: center;
   justify-content: end;
   text-align: right;
-`
-export const ConnectWalletButton = styled(Button)`
-  border-radius: 3px;
-  transition: all 0.5s ease;
-  padding: 0.6rem 1rem;
-  text-transform: uppercase;
-  font-size: 14px;
-  width: 180px;
-
-  &.btn {
-    font-family: Montserrat, sans-serif;
-    font-weight: 600;
-  }
-
-  &.btn-primary {
-    background-color: ${props => props.theme.color.primary};
-    border: 1px solid ${props => props.theme.color.primary};
-
-    &:hover,
-    &:focus,
-    &:active {
-      background-color: ${props => props.theme.color.secondary};
-      border: 1px solid ${props => props.theme.color.secondary};
-    }
-
-    &:active,
-    &:focus {
-      box-shadow: 0 0 0 0.25rem ${props => props.theme.color.secondary}42;
-    }
-  }
 `
 // Main Menu
 export const MainMenuWrapper = styled.div`

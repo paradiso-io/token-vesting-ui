@@ -1,17 +1,10 @@
 import { useState } from 'react'
 import { Row, Col } from 'react-bootstrap'
-import {
-  HeaderWrapper,
-  HeaderContainer,
-  Logo,
-  LogoMobile,
-  RightColumn,
-  ConnectWalletButton,
-  MobileWrap,
-} from './Styled'
+import { HeaderWrapper, HeaderContainer, Logo, LogoMobile, RightColumn, MobileWrap } from './Styled'
 import MainMenu from './MainMenu'
 import MobileMenu from './MobileMenu'
 import MenuToggle from './MenuToggle'
+import AccountButton from '../AccountButton'
 import LogoPNG from '../../assets/images/logo.png'
 import LogoMobilePNG from '../../assets/images/logo-mobile.png'
 
@@ -32,7 +25,7 @@ function Header(): JSX.Element {
             <RightColumn>
               <MainMenu />
               <MobileWrap>
-                <ConnectWalletButton variant="primary">Connect Wallet</ConnectWalletButton>
+                <AccountButton />
                 <MenuToggle openMenuCallback={() => setMobileMenuOpen(!mobileMenuOpen)} />
               </MobileWrap>
             </RightColumn>

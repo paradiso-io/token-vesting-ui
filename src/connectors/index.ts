@@ -15,7 +15,7 @@ if (typeof NETWORK_URL === 'undefined') {
 }
 
 export const injected = new InjectedConnector({
-  supportedChainIds: [56, 97],
+  supportedChainIds: [1, 42],
 })
 
 export const walletconnect = new WalletConnectConnector({
