@@ -4,6 +4,9 @@
   padding: 1rem;
   border-radius: 0.357rem;
 }
+.Toastify__toast .Toastify__toast-icon {
+  display: none;
+}
 .Toastify__toast .Toastify__toast-body,
 .Toastify__toast .Toastify__close-button {
   color: #fff;

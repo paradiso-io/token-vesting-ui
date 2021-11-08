@@ -43,6 +43,10 @@ export const ConnectWalletButton = styled(Button)`
     }
   }
 `
+export const AddressButton = styled(ConnectWalletButton)`
+  padding: 0.6rem 1.5rem;
+  width: auto;
+`
 export const ButtonWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -96,11 +100,33 @@ export const WalletLogo = styled.img`
   width: 20px;
   float: right;
 `
-export const AccountAddress = styled.span`
-  padding: 0.6rem 1rem;
-  border-radius: 3px;
-  background-color: ${props => props.theme.color.primary};
-  font-size: 14px;
+// Wallet modal
+export const AddressH6 = styled.h6`
+  word-break: break-all;
   font-weight: 600;
   color: #fff;
+`
+export const AccountActions = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-top: 1.5rem;
+  svg {
+    margin-left: 0.5rem;
+  }
+  @media (min-width: 768px) {
+    flex-direction: row;
+  }
+`
+export const CopyAddressSpan = styled.span`
+  color: ${props => props.theme.color.primary};
+  cursor: pointer;
+  margin-top: 1rem;
+  @media (min-width: 768px) {
+    margin-top: 0;
+    margin-left: 2rem;
+  }
+`
+export const LogoutButton = styled(ConnectWalletButton)`
+  padding: 0.6rem 2rem;
+  width: auto;
 `
