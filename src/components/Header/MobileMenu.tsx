@@ -17,6 +17,11 @@ function MobileMenu(props: IMobileMenuProps): JSX.Element {
             </MobileMenuLink>
           </li>
           <li>
+            <MobileMenuLink href="https://stake.dotoracle.network" target="_blank" rel="nofollow noreferrer noopener">
+              Stake
+            </MobileMenuLink>
+          </li>
+          <li>
             <MobileMenuLink href="https://docs.dotoracle.network/" target="_blank" rel="nofollow noreferrer noopener">
               Docs
             </MobileMenuLink>
