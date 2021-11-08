@@ -3,7 +3,7 @@ import styled from 'styled-components/macro'
 
 const StyledModal = styled(BootstrapModal)`
   .modal-content {
-    background-color: ${props => props.theme.color.headerBg};
+    background-color: ${props => props.theme.color.black};
   }
   .modal-header {
     border-bottom: 2px solid ${props => props.theme.color.primary};

@@ -32,7 +32,6 @@ function ConnectModal(props: IConnectModalProps): JSX.Element {
 
   const onConnectWallet = async (connectorID: ConnectorNames) => {
     const connector = connectorsByName[connectorID]
-    console.log('aaa')
 
     if (connector) {
       window.localStorage.setItem(connectorLocalStorageKey, connectorID)
