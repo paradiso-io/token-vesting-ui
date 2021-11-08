@@ -7,14 +7,14 @@ function Footer(): JSX.Element {
     <FooterWrapper>
       <Container>
         <Row className="align-items-center">
-          <Col md={6}>
+          <Col md={7} lg={6}>
             Copyright {new Date().getFullYear()}&nbsp;
             <a href="https://dotoracle.network/" target="_blank" rel="nofollow noreferrer noopener">
               DotOracle
             </a>
             . All rights reserved.
           </Col>
-          <Col md={6}>
+          <Col md={5} lg={6}>
             <SocialLinks>
               <SocialItem>
                 <a href="https://t.me/dotoracle" target="_blank" rel="nofollow noreferrer noopener">
