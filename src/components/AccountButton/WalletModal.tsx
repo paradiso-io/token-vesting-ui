@@ -27,7 +27,7 @@ function WalletModal(props: IWalletModalProps): JSX.Element {
   }
 
   const onCopyAddress = () => {
-    toast.error(<ToastMessage color="success" headerText="Success" bodyText="Copied" />)
+    toast.success(<ToastMessage color="success" headerText="Success" bodyText="Copied" />)
   }
 
   return (
