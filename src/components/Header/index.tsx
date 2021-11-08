@@ -1,19 +1,25 @@
 import { Row, Col } from 'react-bootstrap'
-import { HeaderWrapper, HeaderContainer, Logo, AlignRight, ConnectWalletButton } from './Styled'
+import { HeaderWrapper, HeaderContainer, Logo, LogoMobile, RightColumn, ConnectWalletButton } from './Styled'
+import MainMenu from './MainMenu'
 import LogoPNG from '../../assets/images/logo.png'
+import LogoMobilePNG from '../../assets/images/logo-mobile.png'
 
 function Header(): JSX.Element {
   return (
     <HeaderWrapper>
       <HeaderContainer>
         <Row className="align-items-center w-100">
-          <Col md={3}>
-            <Logo src={LogoPNG} alt="DotOracle" />
+          <Col xs={6} md={3}>
+            <a href="/">
+              <Logo src={LogoPNG} alt="DotOracle" />
+              <LogoMobile src={LogoMobilePNG} alt="DotOracle" />
+            </a>
           </Col>
-          <Col md={9}>
-            <AlignRight>
+          <Col xs={6} md={9}>
+            <RightColumn>
+              <MainMenu />
               <ConnectWalletButton variant="primary">Connect Wallet</ConnectWalletButton>
-            </AlignRight>
+            </RightColumn>
           </Col>
         </Row>
       </HeaderContainer>

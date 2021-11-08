@@ -12,9 +12,25 @@ export const HeaderContainer = styled(Container)`
   }
 `
 export const Logo = styled.img`
+  display: none;
   height: auto;
+
+  @media (min-width: 768px) {
+    display: block;
+  }
 `
-export const AlignRight = styled.div`
+export const LogoMobile = styled.img`
+  display: block;
+  height: auto;
+
+  @media (min-width: 768px) {
+    display: none;
+  }
+`
+export const RightColumn = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: end;
   text-align: right;
 `
 export const ConnectWalletButton = styled(Button)`
@@ -43,5 +59,42 @@ export const ConnectWalletButton = styled(Button)`
     &:focus {
       box-shadow: 0 0 0 0.25rem ${props => props.theme.color.secondary}42;
     }
+  }
+`
+// Main Menu
+export const MainMenuWrapper = styled.div`
+  display: none;
+  align-items: center;
+
+  @media (min-width: 992px) {
+    display: flex;
+    margin-right: 3rem;
+  }
+`
+export const MenuLink = styled.a`
+  position: relative;
+  padding: 0 30px;
+  text-transform: uppercase;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #fff;
+
+  &:hover {
+    text-decoration: none;
+
+    &::after {
+      width: calc(100% - 60px);
+    }
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 30px;
+    background-color: ${props => props.theme.color.primary};
+    width: 0;
+    height: 2px;
+    transition: all 0.4s ease;
   }
 `
