@@ -93,6 +93,8 @@ export const MobileMenuWrapper = styled.ul`
   top: 100%;
   width: 100%;
   background-color: ${props => props.theme.color.headerBg};
+  z-index: 3;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 3px 5px;
 
   li {
     padding: 0.5rem 1rem;
