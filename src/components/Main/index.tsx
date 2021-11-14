@@ -19,6 +19,7 @@ import {
   ClaimCountdownText,
 } from './Styled'
 import { useActiveWeb3React, useVestingContract } from '../../hooks'
+import useViewport from '../../hooks/useViewport'
 import config from '../../config.json'
 import { formatNumber, fromWei } from '../../utils'
 
@@ -36,7 +37,11 @@ function Main(): JSX.Element {
   const networkId = chainId ?? Number(process.env.REACT_APP_CHAIN_ID)
   // @ts-ignore
   const { token, explorerUrl, vesting } = config[networkId]
+  const addressEllipsis = `${token.address.substring(0, 8)}...${token.address.substring(token.address.length - 16)}`
   const vestingContract = useVestingContract(vesting)
+
+  const viewPort = useViewport()
+  const isMobile = viewPort.width < 576
 
   const fetchLockedInfo = async () => {
     try {
@@ -105,15 +110,15 @@ function Main(): JSX.Element {
       </Container>
       <Container>
         <Row className="justify-content-center">
-          <Col md={6}>
+          <Col md={9} lg={6}>
             <ClaimWrapper>
               <h5>Vesting details</h5>
               <TokenInfo>
                 <img src={token.logo} alt="Token Logo" />
                 <span>
                   {token.symbol}:
-                  <a href={explorerUrl} target="_blank" rel="nofollow noreferrer noopener">
-                    {token.address}
+                  <a href={`${explorerUrl}token/${token.address}`} target="_blank" rel="nofollow noreferrer noopener">
+                    {isMobile ? addressEllipsis : token.address}
                   </a>
                 </span>
               </TokenInfo>
