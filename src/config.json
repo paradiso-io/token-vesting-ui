@@ -9,7 +9,7 @@
     }
   },
   "42": {
-    "vesting": "0x34b4f403d6aB2324b0E3a14E36d179211e98cB3a",
+    "vesting": "0xEc9BB79c75B6Da8Cd216B1feBCa5fd7929763698",
     "explorerUrl": "https://kovan.etherscan.io/",
     "token": {
       "address": "0xfe8b72af29b06da03c4c4fcf1166f0303a341b53",
