@@ -32,6 +32,7 @@ function Main(): JSX.Element {
   const [startVestingTime, setStartVestingTime] = useState(0)
   const [isFetching, setFetching] = useState(false)
   const [isClaiming, setClaiming] = useState(false)
+  const [claimed, setClaimed] = useState(false)
 
   const { account, chainId } = useActiveWeb3React()
   const networkId = chainId ?? Number(process.env.REACT_APP_CHAIN_ID)
@@ -69,7 +70,7 @@ function Main(): JSX.Element {
 
   useEffect(() => {
     fetchLockedInfo()
-  }, [account])
+  }, [account, claimed])
 
   const claimToken = async () => {
     try {
@@ -93,6 +94,7 @@ function Main(): JSX.Element {
       console.error(error)
     } finally {
       setClaiming(false)
+      setClaimed(true)
     }
   }
 
