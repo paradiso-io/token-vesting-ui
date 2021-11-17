@@ -15,13 +15,13 @@ function Header(): JSX.Element {
     <HeaderWrapper>
       <HeaderContainer>
         <Row className="align-items-center">
-          <Col xs={6} md={3}>
+          <Col xs={4} md={3}>
             <a href="/">
               <Logo src={LogoPNG} alt="DotOracle" />
               <LogoMobile src={LogoMobilePNG} alt="DotOracle" />
             </a>
           </Col>
-          <Col xs={6} md={9}>
+          <Col xs={8} md={9}>
             <RightColumn>
               <MainMenu />
               <MobileWrap>

@@ -18,7 +18,7 @@ function WalletModal(props: IWalletModalProps): JSX.Element {
   const { account, chainId, deactivate } = useActiveWeb3React()
   const networkId = chainId ?? Number(process.env.REACT_APP_CHAIN_ID)
   // @ts-ignore
-  const explorerURL = config[networkId]
+  const explorerURL = config[networkId].explorerUrl
 
   const logout = () => {
     deactivate()
@@ -38,7 +38,7 @@ function WalletModal(props: IWalletModalProps): JSX.Element {
     >
       <AddressH6>{account}</AddressH6>
       <AccountActions>
-        <a href={`${explorerURL}/address/${account}`} target="_blank" rel="nofollow noreferrer noopener">
+        <a href={`${explorerURL}address/${account}`} target="_blank" rel="nofollow noreferrer noopener">
           View on Etherscan
           <HiOutlineExternalLink />
         </a>
