@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-const useViewport = () => {
+export const useViewport = () => {
   const [width, setWidth] = useState(window.innerWidth)
 
   useEffect(() => {
@@ -12,5 +12,3 @@ const useViewport = () => {
 
   return { width }
 }
-
-export default useViewport

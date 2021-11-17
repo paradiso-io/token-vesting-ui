@@ -18,8 +18,7 @@ import {
   LoadingIcon,
   ClaimCountdownText,
 } from './Styled'
-import { useActiveWeb3React, useVestingContract } from '../../hooks'
-import useViewport from '../../hooks/useViewport'
+import { useActiveWeb3React, useVestingContract, useViewport } from '../../hooks'
 import config from '../../config.json'
 import { formatNumber, fromWei } from '../../utils'
 
