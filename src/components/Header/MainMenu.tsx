@@ -6,7 +6,7 @@ function MainMenu(): JSX.Element {
       <MenuLink href="https://dotoracle.network" target="_blank" rel="nofollow noreferrer noopener">
         Homepage
       </MenuLink>
-      <MenuLink href="https://stake.dotoracle.network" target="_blank" rel="nofollow noreferrer noopener">
+      <MenuLink href="https://staking.dotoracle.network" target="_blank" rel="nofollow noreferrer noopener">
         Stake
       </MenuLink>
       <MenuLink href="https://docs.dotoracle.network/" target="_blank" rel="nofollow noreferrer noopener">
