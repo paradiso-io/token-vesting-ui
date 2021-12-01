@@ -35,6 +35,7 @@ function Main(): JSX.Element {
 
   const { account, chainId } = useActiveWeb3React()
   const networkId = chainId ?? Number(process.env.REACT_APP_CHAIN_ID)
+  console.log(networkId, chainId, Number(process.env.REACT_APP_CHAIN_ID))
   // @ts-ignore
   const { token, explorerUrl, vesting } = config[networkId]
   const addressEllipsis = `${token.address.substring(0, 8)}...${token.address.substring(token.address.length - 16)}`
